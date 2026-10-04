@@ -1,45 +1,137 @@
-# Governança de relatórios Power BI 🚀
+# Automação de Governança de Relatórios Power BI
 
-Este projeto foi desenvolvido para criar um painel de **governança dos relatórios da empresa**, permitindo acompanhar quais relatórios são atualizados por workspace e por horário.
+## Visão geral
 
-A primeira versão usa:
-- 📂 **Google Drive & Google Sheets** (via Google Apps Script)
-- 📊 **Power BI Desktop & Service**
+Projeto desenvolvido para automatizar a coleta, centralização e visualização de informações relacionadas à atualização dos relatórios corporativos do Power BI.
 
----
+A solução integra diferentes plataformas para disponibilizar dados de monitoramento em um dashboard de governança, permitindo acompanhar informações por workspace e horário de atualização.
 
-## 🎯 Objetivos
-✅ Automatizar o fluxo de atualização dos dados para o dashboard de governança.  
-✅ Facilitar o acompanhamento dos relatórios e workspaces do Power BI.  
-✅ Garantir que o dashboard esteja sempre atualizado sem intervenção manual.
+O projeto contempla desde a exportação dos dados no Grafana até sua disponibilização no Power BI, utilizando automações para reduzir intervenções manuais e garantir a atualização periódica das informações.
 
----
+## Objetivos
 
-## ⚙ Tecnologias usadas
-- **Google Apps Script**: script que busca diariamente um arquivo CSV atualizado no Google Drive e sobrescreve dados em um Google Sheets.
-- **Power BI Desktop & Service**: dashboard final que consolida e exibe os dados.
-- **Triggers do Google Apps Script** e agendamento automático no Power BI Service.
+* Automatizar a coleta diária dos dados de monitoramento.
+* Integrar informações provenientes do Grafana.
+* Centralizar os dados em uma fonte acessível ao Power BI.
+* Monitorar a atualização dos relatórios por workspace e horário.
+* Reduzir atividades operacionais manuais.
+* Disponibilizar informações atualizadas para acompanhamento da governança do ambiente de BI.
 
----
+## Tecnologias utilizadas
 
-## 🚀 Como funciona
+| Tecnologia         | Aplicação no projeto                               |
+| ------------------ | -------------------------------------------------- |
+| Grafana            | Exportação dos dados de monitoramento em CSV       |
+| Gmail              | Recebimento dos arquivos exportados                |
+| Google Apps Script | Automação da busca e processamento dos arquivos    |
+| Google Drive       | Armazenamento dos arquivos                         |
+| Google Sheets      | Camada intermediária de disponibilização dos dados |
+| Power BI Desktop   | Modelagem e desenvolvimento do dashboard           |
+| Power BI Service   | Publicação e atualização agendada do relatório     |
 
-### 📝 Fluxo automatizado
-- Todos os dias, é disponibilizado um arquivo CSV atualizado.
-- Um script em **Google Apps Script** busca este arquivo no Google Drive e substitui o conteúdo de uma planilha Google Sheets.
-- O **Power BI** consome este Google Sheets como fonte de dados e atualiza o dataset automaticamente via agendamento no Power BI Service.
+## Arquitetura da solução
 
----
+O fluxo foi estruturado em etapas integradas:
 
-## 🖼 Prints e diagramas
-![Dashboard Power BI](./imagens/dash_powerbi.png)
+### 1. Extração dos dados — Grafana
+
+Os dados de monitoramento são exportados diariamente pelo Grafana em formato CSV e encaminhados por e-mail.
+
+### 2. Recebimento — Gmail
+
+Os arquivos exportados são recebidos em uma conta Gmail, que funciona como ponto de entrada para o processo automatizado.
+
+### 3. Automação e processamento — Google Apps Script
+
+Foi desenvolvido um script em Google Apps Script, com apoio de inteligência artificial generativa, para localizar e recuperar automaticamente o arquivo CSV recebido.
+
+A execução é controlada por uma trigger configurada para executar o processo em horário predefinido.
+
+### 4. Armazenamento e disponibilização — Google Drive e Google Sheets
+
+Após a identificação do arquivo, o script realiza o processamento dos dados e atualiza a planilha de destino no Google Sheets.
+
+Essa planilha funciona como camada intermediária para disponibilização dos dados ao Power BI.
+
+### 5. Visualização e atualização — Power BI
+
+O Power BI consome os dados disponibilizados no Google Sheets.
+
+A atualização do conjunto de dados é configurada no Power BI Service, permitindo que o dashboard apresente informações atualizadas de forma periódica.
+
+## Fluxo automatizado
+
+```text
+GRAFANA
+   |
+   | Exportação diária em CSV
+   v
+GMAIL
+   |
+   | Recebimento do arquivo
+   v
+GOOGLE APPS SCRIPT
+   |
+   | Busca e processamento automatizado
+   | Execução por Trigger
+   v
+GOOGLE DRIVE
+   |
+   v
+GOOGLE SHEETS
+   |
+   | Fonte de dados do Power BI
+   v
+POWER BI SERVICE
+   |
+   | Atualização agendada
+   v
+DASHBOARD DE GOVERNANÇA
+   |
+   v
+Monitoramento por Workspace
+e Horário de Atualização
+```
+
+## Demonstração do projeto
+
+### Dashboard de Governança
+
+![Dashboard de Governança Power BI](./imagens/dash_powerbi.png)
+
+### Arquitetura da automação
+
 ![Fluxo de automação](./imagens/fluxo_arquitetura.png)
 
+## Desenvolvimento com apoio de IA
+
+O desenvolvimento do script de automação contou com apoio de inteligência artificial generativa para estruturação inicial do código e aceleração da implementação.
+
+A solução foi adaptada e integrada ao processo, considerando as necessidades de coleta, processamento e atualização dos dados.
+
+## Estrutura do repositório
+
+```text
+governanca-powerbi/
+│
+├── google-script/
+│   └── script_automacao.gs
+│
+├── imagens/
+│   ├── dash_powerbi.png
+│   └── fluxo_arquitetura.png
+│
+├── README.md
+│
+└── Novo_time_Dados.drawio
+```
+
+## Evoluções futuras
+
+* Integração com a API REST do Power BI Service.
+* Ampliação das informações de monitoramento.
+* Evolução dos mecanismos de governança e acompanhamento das atualizações.
+
 ---
 
-## 🤖 Sobre o uso de IA
-Partes do script foram inicialmente geradas com apoio de IA (ChatGPT / Copilot) para acelerar o desenvolvimento, com revisão, adaptação e integração feitos por mim.
-
----
-
-## 📂 Estrutura do projeto
+**Projeto de portfólio | Data Analytics | Business Intelligence | Automação | Governança de Dados**
