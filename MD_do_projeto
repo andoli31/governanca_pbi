@@ -1,0 +1,45 @@
+# Governança de relatórios Power BI 🚀
+
+Este projeto foi desenvolvido para criar um painel de **governança dos relatórios da empresa**, permitindo acompanhar quais relatórios são atualizados por workspace e por horário.
+
+A primeira versão usa:
+- 📂 **Google Drive & Google Sheets** (via Google Apps Script)
+- 📊 **Power BI Desktop & Service**
+
+---
+
+## 🎯 Objetivos
+✅ Automatizar o fluxo de atualização dos dados para o dashboard de governança.  
+✅ Facilitar o acompanhamento dos relatórios e workspaces do Power BI.  
+✅ Garantir que o dashboard esteja sempre atualizado sem intervenção manual.
+
+---
+
+## ⚙ Tecnologias usadas
+- **Google Apps Script**: script que busca diariamente um arquivo CSV atualizado no Google Drive e sobrescreve dados em um Google Sheets.
+- **Power BI Desktop & Service**: dashboard final que consolida e exibe os dados.
+- **Triggers do Google Apps Script** e agendamento automático no Power BI Service.
+
+---
+
+## 🚀 Como funciona
+
+### 📝 Fluxo automatizado
+- Todos os dias, é disponibilizado um arquivo CSV atualizado.
+- Um script em **Google Apps Script** busca este arquivo no Google Drive e substitui o conteúdo de uma planilha Google Sheets.
+- O **Power BI** consome este Google Sheets como fonte de dados e atualiza o dataset automaticamente via agendamento no Power BI Service.
+
+---
+
+## 🖼 Prints e diagramas
+![Dashboard Power BI](./imagens/dash_powerbi.png)
+![Fluxo de automação](./imagens/fluxo_arquitetura.png)
+
+---
+
+## 🤖 Sobre o uso de IA
+Partes do script foram inicialmente geradas com apoio de IA (ChatGPT / Copilot) para acelerar o desenvolvimento, com revisão, adaptação e integração feitos por mim.
+
+---
+
+## 📂 Estrutura do projeto
